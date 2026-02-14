@@ -1,0 +1,49 @@
+# macOS / editor noise
+.DS_Store
+.vscode/
+.idea/
+
+# Python cache / virtualenv
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Local environment files
+.env
+.env.*
+
+# Logs and temporary files
+*.log
+tmp/
+temp/
+
+# Data: keep curated small example(s), ignore bulky raw downloads
+data/raw/
+data/interim/
+data/processed/
+*.zip
+*.7z
+*.tar
+*.tar.gz
+*.parquet
+*.feather
+*.rds
+*.RData
+
+# Keep the starter KB in git
+!data/te_knowledge_base.jsonl
+
+# Optional local vector index/artifacts
+indexes/
+vector_store.json

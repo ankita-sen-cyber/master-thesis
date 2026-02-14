@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ollama
+  labels:
+    app: ollama
+spec:
+  containers:
+    - name: ollama
+      image: ollama/ollama:latest
+      ports:
+        - containerPort: 11434
+      env:
+        - name: OLLAMA_KEEP_ALIVE
+          value: "10m"
+      volumeMounts:
+        - name: ollama-data
+          mountPath: /root/.ollama
+  volumes:
+    - name: ollama-data
+      emptyDir: {}
