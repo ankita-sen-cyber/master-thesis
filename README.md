@@ -2,6 +2,23 @@
 
 Alarm flood management system.
 
+## Environment Setup
+
+Use a local virtual environment so installs are not global:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+If you only run retrieval/RAG and do not ingest `.RData`, you can skip `pyreadr`:
+
+```bash
+pip install -r requirements-min.txt
+```
+
 ## Specifications
 
 - `/Users/ankitasen/Desktop/MASTER THESIS/alarm-flood/master-thesis/docs/te_alarm_rag_spec.md`: TE alarm/fault knowledge base and retrieval design requirements.
@@ -68,5 +85,27 @@ PYTHONPATH=src python3 -m alarm_rag.cli \
   --time-scale seconds \
   --top-k 4 \
   --ollama-url http://localhost:11434 \
-  --ollama-model llama3.1:8b
+  --ollama-model gemma3:4b
+```
+
+## Build KB From RData (Faulty + Fault-Free)
+
+If your cleaned TE training data is in RData files:
+
+```bash
+pip install -r requirements.txt
+PYTHONPATH=src python3 -m alarm_rag.build_kb_from_rdata \
+  --faulty-rdata data/dataverse_files/TEP_Faulty_Training.RData \
+  --faultfree-rdata data/dataverse_files/TEP_FaultFree_Training.RData \
+  --output data/te_knowledge_base.generated.jsonl
+```
+
+Then query the generated KB:
+
+```bash
+PYTHONPATH=src python3 -m alarm_rag.cli \
+  --mode retrieve \
+  --data data/te_knowledge_base.generated.jsonl \
+  --alarms AH_P_REACTOR_HIGH \
+  --top-k 5
 ```

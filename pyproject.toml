@@ -8,6 +8,14 @@ version = "0.1.0"
 description = "Alarm flood RAG pipeline for Tennessee Eastman fault diagnosis"
 readme = "README.md"
 requires-python = ">=3.10"
+dependencies = [
+  "pandas>=2.0,<3.0",
+]
+
+[project.optional-dependencies]
+rdata = [
+  "pyreadr>=0.5,<1.0",
+]
 
 [tool.setuptools]
 package-dir = {"" = "src"}

@@ -1,0 +1,2 @@
+# Minimal runtime for retrieval + RAG CLI (no RData ingestion)
+# Currently stdlib + project code are sufficient.
