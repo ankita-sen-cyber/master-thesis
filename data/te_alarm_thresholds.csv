@@ -1,0 +1,31 @@
+variable,instrument_type,arr17_tag,description,hi_alarm,normal,lo_alarm,unit
+xmeas_1,FIR,100,Flow Feed A,0.26,0.25,0.24,kscmh
+xmeas_2,FIR,101,Flow Feed D,3735.00,3664.00,3589.00,kg h^-1
+xmeas_3,FIR,102,Flow Feed E,4599.00,4509.00,4419.00,kg h^-1
+xmeas_4,FIR,103,Flow Feed C,9.54,9.35,9.16,kscmh
+xmeas_5,FIR,114,Flow Compressor Re-Cycle,27.44,26.90,26.36,kscmh
+xmeas_6,FIR,104,Flow Reactor Feed,43.19,42.34,41.49,kscmh
+xmeas_7,PIR,108,Pressure Reactor,2895.00,2705.00,0.00,kPa gauge
+xmeas_8,LIR,106,Level Reactor,100.00,75.00,50.00,%
+xmeas_9,TIR,105,Temperature Reactor,150.00,120.40,0.00,degC
+xmeas_10,FIR,115,Flow Purge,0.375,0.337,0.303,kscmh
+xmeas_11,TIR,118,Temperature Separator,81.70,80.10,78.50,degC
+xmeas_12,LIR,117,Level Separator,100.00,50.00,30.00,%
+xmeas_13,PIR,116,Pressure Separator,2686.37,2633.70,2581.03,kPa gauge
+xmeas_14,FIR,119,Underflow Separator,25.66,25.16,24.66,m^3 h^-1
+xmeas_15,LIR,110,Level Stripper,100.00,50.00,30.00,%
+xmeas_16,PIR,111,Pressure Stripper,3164.24,3102.20,3040.16,kPa gauge
+xmeas_17,FIR,121,Underflow Stripper,23.41,22.95,22.49,m^3 h^-1
+xmeas_18,TIR,111,Temperature Stripper,67.05,65.73,64.42,degC
+xmeas_20,K,100,Compressor Work,348.26,341.43,334.60,kW
+xmeas_21,TIR,109,Temperature Cooling Water Outlet Reactor,96.49,94.60,92.71,degC
+xmeas_22,TIR,113,Temperature Cooling Water Outlet Condenser,78.84,77.30,75.75,degC
+xmeas_23,AIR,001,Concentration Reactor Feed Material A,35.41,32.19,28.97,mol%
+xmeas_25,AIR,001,Concentration Reactor Feed Material C,29.02,26.38,23.74,mol%
+xmeas_37,AIR,002,Concentration Underflow Stripper Material D,0.022,0.02,0.018,mol%
+xmeas_38,AIR,002,Concentration Underflow Stripper Material E,0.92,0.84,0.76,mol%
+xmv_1,V,161,Valve Position Feed D,100.00,63.05,0.00,%
+xmv_2,V,162,Valve Position Feed E,100.00,53.98,0.00,%
+xmv_3,V,160,Valve Position Feed A,100.00,24.64,0.00,%
+xmv_4,V,163,Valve Position Feed C,100.00,61.30,0.00,%
+xmv_6,V,167,Valve Position Purge,100.00,40.06,0.00,%

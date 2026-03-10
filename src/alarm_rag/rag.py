@@ -5,7 +5,12 @@ from .types import AlarmFloodQuery
 from .vector_store import SearchResult
 
 
-def build_rag_prompt(query: AlarmFloodQuery, retrieved: list[SearchResult]) -> str:
+def build_rag_prompt(
+    query: AlarmFloodQuery,
+    retrieved: list[SearchResult],
+    question: str | None = None,
+    max_doc_text_chars: int = 1200,
+) -> str:
     lines: list[str] = []
     lines.append("You are an industrial alarm-flood diagnosis assistant for the Tennessee Eastman process.")
     lines.append("Use only the retrieved context. If uncertain, say explicitly what is uncertain.")
@@ -14,17 +19,21 @@ def build_rag_prompt(query: AlarmFloodQuery, retrieved: list[SearchResult]) -> s
     lines.append(f"- Active alarm tags: {', '.join(query.active_alarm_tags) if query.active_alarm_tags else 'none'}")
     lines.append(f"- Process state: {query.process_state if query.process_state else '{}'}")
     lines.append(f"- Fault hint: {query.fault_hint or 'none'}")
+    lines.append(f"- User question: {question or 'Provide diagnosis and operator guidance.'}")
     lines.append("")
     lines.append("Retrieved documents:")
 
     for idx, item in enumerate(retrieved, start=1):
         doc = item.doc
+        text = doc.text
+        if len(text) > max_doc_text_chars:
+            text = f"{text[:max_doc_text_chars]}..."
         lines.append(
             f"[{idx}] id={doc.doc_id} score={item.score:.4f} type={doc.doc_type} "
             f"fault_type={doc.fault_type} alarms={doc.alarm_tags} "
             f"region={doc.operating_region} time_scale={doc.time_scale}"
         )
-        lines.append(f"[{idx}] text: {doc.text}")
+        lines.append(f"[{idx}] text: {text}")
 
     lines.append("")
     lines.append("Return output in this exact structure:")
@@ -40,7 +49,14 @@ def generate_rag_answer(
     client: OllamaClient,
     query: AlarmFloodQuery,
     retrieved: list[SearchResult],
+    question: str | None = None,
     temperature: float = 0.1,
+    max_doc_text_chars: int = 1200,
 ) -> str:
-    prompt = build_rag_prompt(query=query, retrieved=retrieved)
+    prompt = build_rag_prompt(
+        query=query,
+        retrieved=retrieved,
+        question=question,
+        max_doc_text_chars=max_doc_text_chars,
+    )
     return client.generate(prompt=prompt, temperature=temperature)

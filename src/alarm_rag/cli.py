@@ -2,16 +2,17 @@ from __future__ import annotations
 
 import argparse
 import json
+import socket
 from urllib.error import URLError
 
 from .llm import OllamaClient
 from .pipeline import AlarmRAGPipeline
-from .rag import generate_rag_answer
+from .rag import build_rag_prompt
 from .types import AlarmFloodQuery
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="TE Alarm RAG retrieval CLI")
+    parser = argparse.ArgumentParser(description="TE Alarm RAG CLI (always retrieve + generate)")
     parser.add_argument("--data", required=True, help="Path to JSON/JSONL knowledge documents")
     parser.add_argument("--top-k", type=int, default=5, help="Number of results to return")
     parser.add_argument("--alarms", default="", help="Comma-separated active alarm tags")
@@ -19,10 +20,22 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--region", default=None, help="Operating region filter/context")
     parser.add_argument("--time-scale", default=None, help="Time scale filter/context")
     parser.add_argument("--metadata-filter", default=None, help="JSON object for metadata filtering")
-    parser.add_argument("--mode", choices=["retrieve", "rag"], default="retrieve", help="Run retrieval only or full RAG")
     parser.add_argument("--ollama-url", default="http://localhost:11434", help="Ollama base URL")
     parser.add_argument("--ollama-model", default="llama3.1:8b", help="Ollama model name")
-    parser.add_argument("--temperature", type=float, default=0.1, help="Generation temperature for RAG mode")
+    parser.add_argument("--temperature", type=float, default=0.1, help="Generation temperature")
+    parser.add_argument("--request-timeout", type=int, default=180, help="LLM request timeout in seconds")
+    parser.add_argument(
+        "--max-doc-text-chars",
+        type=int,
+        default=1200,
+        help="Max chars per retrieved document inserted into prompt",
+    )
+    parser.add_argument("--debug-rag", action="store_true", help="Print prompt-size diagnostics")
+    parser.add_argument(
+        "--question",
+        required=True,
+        help="Free-text question for LLM generation (diagnosis/actions/etc.)",
+    )
     return parser
 
 
@@ -56,19 +69,37 @@ def main() -> None:
         print(f"    region={doc.operating_region} time_scale={doc.time_scale}")
         print(f"    text={doc.text[:180]}{'...' if len(doc.text) > 180 else ''}")
 
-    if args.mode == "rag":
-        client = OllamaClient(base_url=args.ollama_url, model=args.ollama_model)
-        try:
-            answer = generate_rag_answer(client=client, query=query, retrieved=results, temperature=args.temperature)
-            print("\n===== RAG ANSWER =====")
-            print(answer)
-        except URLError as exc:
-            print("\n===== RAG ERROR =====")
-            print(
-                "Could not reach Ollama at "
-                f"{args.ollama_url}. Start Ollama and pull model {args.ollama_model}. "
-                f"Details: {exc}"
-            )
+    prompt = build_rag_prompt(
+        query=query,
+        retrieved=results,
+        question=args.question,
+        max_doc_text_chars=args.max_doc_text_chars,
+    )
+    if args.debug_rag:
+        print(
+            "\n[RAG DEBUG] "
+            f"model={args.ollama_model} top_k={len(results)} "
+            f"prompt_chars={len(prompt)} timeout_s={args.request_timeout} "
+            f"max_doc_text_chars={args.max_doc_text_chars}"
+        )
+
+    client = OllamaClient(
+        base_url=args.ollama_url,
+        model=args.ollama_model,
+        timeout_seconds=args.request_timeout,
+    )
+    try:
+        answer = client.generate(prompt=prompt, temperature=args.temperature)
+        print("\n===== RAG ANSWER =====")
+        print(answer)
+    except (URLError, TimeoutError, socket.timeout) as exc:
+        print("\n===== RAG ERROR =====")
+        print(
+            "RAG request failed. Check Ollama service/model and tune prompt size/timeout. "
+            f"url={args.ollama_url} model={args.ollama_model} "
+            f"top_k={len(results)} prompt_chars={len(prompt)} timeout_s={args.request_timeout}. "
+            f"Details: {exc}"
+        )
 
 
 if __name__ == "__main__":

@@ -1,0 +1,86 @@
+variable,group,index,instrument_type,arr17_tag,description,unit
+xmeas_1,XMEAS,1,FIR,100,Flow Feed A,kscmh
+xmeas_2,XMEAS,2,FIR,101,Flow Feed D,kg h^-1
+xmeas_3,XMEAS,3,FIR,102,Flow Feed E,kg h^-1
+xmeas_4,XMEAS,4,FIR,103,Flow Feed C,kscmh
+xmeas_5,XMEAS,5,FIR,114,Flow Compressor Re-Cycle,kscmh
+xmeas_6,XMEAS,6,FIR,104,Flow Reactor Feed,kscmh
+xmeas_7,XMEAS,7,PIR,108,Pressure Reactor,kPa gauge
+xmeas_8,XMEAS,8,LIR,106,Level Reactor,%
+xmeas_9,XMEAS,9,TIR,105,Temperature Reactor,degC
+xmeas_10,XMEAS,10,FIR,115,Flow Purge,kscmh
+xmeas_11,XMEAS,11,TIR,118,Temperature Separator,degC
+xmeas_12,XMEAS,12,LIR,117,Level Separator,%
+xmeas_13,XMEAS,13,PIR,116,Pressure Separator,kPa gauge
+xmeas_14,XMEAS,14,FIR,119,Underflow Separator,m^3 h^-1
+xmeas_15,XMEAS,15,LIR,110,Level Stripper,%
+xmeas_16,XMEAS,16,PIR,111,Pressure Stripper,kPa gauge
+xmeas_17,XMEAS,17,FIR,121,Underflow Stripper,m^3 h^-1
+xmeas_18,XMEAS,18,TIR,111,Temperature Stripper,degC
+xmeas_19,XMEAS,19,FIR,120,Flow Stripper Steam,kg h^-1
+xmeas_20,XMEAS,20,K,100,Compressor Work,kW
+xmeas_21,XMEAS,21,TIR,109,Temperature Cooling Water Outlet Reactor,degC
+xmeas_22,XMEAS,22,TIR,113,Temperature Cooling Water Outlet Condenser,degC
+xmeas_23,XMEAS,23,AIR,001,Concentration Reactor Feed (Materials A to F),mol%
+xmeas_24,XMEAS,24,AIR,001,Concentration Reactor Feed (Materials A to F),mol%
+xmeas_25,XMEAS,25,AIR,001,Concentration Reactor Feed (Materials A to F),mol%
+xmeas_26,XMEAS,26,AIR,001,Concentration Reactor Feed (Materials A to F),mol%
+xmeas_27,XMEAS,27,AIR,001,Concentration Reactor Feed (Materials A to F),mol%
+xmeas_28,XMEAS,28,AIR,001,Concentration Reactor Feed (Materials A to F),mol%
+xmeas_29,XMEAS,29,AIR,003,Concentration Purge (Materials A to H),mol%
+xmeas_30,XMEAS,30,AIR,003,Concentration Purge (Materials A to H),mol%
+xmeas_31,XMEAS,31,AIR,003,Concentration Purge (Materials A to H),mol%
+xmeas_32,XMEAS,32,AIR,003,Concentration Purge (Materials A to H),mol%
+xmeas_33,XMEAS,33,AIR,003,Concentration Purge (Materials A to H),mol%
+xmeas_34,XMEAS,34,AIR,003,Concentration Purge (Materials A to H),mol%
+xmeas_35,XMEAS,35,AIR,003,Concentration Purge (Materials A to H),mol%
+xmeas_36,XMEAS,36,AIR,003,Concentration Purge (Materials A to H),mol%
+xmeas_37,XMEAS,37,AIR,002,Concentration Underflow Stripper (Materials D to H),mol%
+xmeas_38,XMEAS,38,AIR,002,Concentration Underflow Stripper (Materials D to H),mol%
+xmeas_39,XMEAS,39,AIR,002,Concentration Underflow Stripper (Materials D to H),mol%
+xmeas_40,XMEAS,40,AIR,002,Concentration Underflow Stripper (Materials D to H),mol%
+xmeas_41,XMEAS,41,AIR,002,Concentration Underflow Stripper (Materials D to H),mol%
+xmeas_42,XMEAS,42,TIR,100,Temperature Feed A,degC
+xmeas_43,XMEAS,43,TIR,101,Temperature Feed D,degC
+xmeas_44,XMEAS,44,TIR,102,Temperature Feed E,degC
+xmeas_45,XMEAS,45,TIR,103,Temperature Feed C,degC
+xmeas_46,XMEAS,46,TIR,122,Temperature Cooling Water Inlet Reactor,degC
+xmeas_47,XMEAS,47,FIR,122,Flow Cooling Water Inlet Reactor,m^3 h^-1
+xmeas_48,XMEAS,48,TIR,123,Temperature Cooling Water Inlet Condenser,degC
+xmeas_49,XMEAS,49,FIR,123,Flow Cooling Water Inlet Condenser,m^3 h^-1
+xmeas_50,XMEAS,50,AIR,100,Concentration Feed A (Materials A to F),mol%
+xmeas_51,XMEAS,51,AIR,100,Concentration Feed A (Materials A to F),mol%
+xmeas_52,XMEAS,52,AIR,100,Concentration Feed A (Materials A to F),mol%
+xmeas_53,XMEAS,53,AIR,100,Concentration Feed A (Materials A to F),mol%
+xmeas_54,XMEAS,54,AIR,100,Concentration Feed A (Materials A to F),mol%
+xmeas_55,XMEAS,55,AIR,100,Concentration Feed A (Materials A to F),mol%
+xmeas_56,XMEAS,56,AIR,101,Concentration Feed D (Materials A to F),mol%
+xmeas_57,XMEAS,57,AIR,101,Concentration Feed D (Materials A to F),mol%
+xmeas_58,XMEAS,58,AIR,101,Concentration Feed D (Materials A to F),mol%
+xmeas_59,XMEAS,59,AIR,101,Concentration Feed D (Materials A to F),mol%
+xmeas_60,XMEAS,60,AIR,101,Concentration Feed D (Materials A to F),mol%
+xmeas_61,XMEAS,61,AIR,101,Concentration Feed D (Materials A to F),mol%
+xmeas_62,XMEAS,62,AIR,102,Concentration Feed E (Materials A to F),mol%
+xmeas_63,XMEAS,63,AIR,102,Concentration Feed E (Materials A to F),mol%
+xmeas_64,XMEAS,64,AIR,102,Concentration Feed E (Materials A to F),mol%
+xmeas_65,XMEAS,65,AIR,102,Concentration Feed E (Materials A to F),mol%
+xmeas_66,XMEAS,66,AIR,102,Concentration Feed E (Materials A to F),mol%
+xmeas_67,XMEAS,67,AIR,102,Concentration Feed E (Materials A to F),mol%
+xmeas_68,XMEAS,68,AIR,103,Concentration Feed C (Materials A to F),mol%
+xmeas_69,XMEAS,69,AIR,103,Concentration Feed C (Materials A to F),mol%
+xmeas_70,XMEAS,70,AIR,103,Concentration Feed C (Materials A to F),mol%
+xmeas_71,XMEAS,71,AIR,103,Concentration Feed C (Materials A to F),mol%
+xmeas_72,XMEAS,72,AIR,103,Concentration Feed C (Materials A to F),mol%
+xmeas_73,XMEAS,73,AIR,103,Concentration Feed C (Materials A to F),mol%
+xmv_1,XMV,1,V,161,Valve Position Feed D,%
+xmv_2,XMV,2,V,162,Valve Position Feed E,%
+xmv_3,XMV,3,V,160,Valve Position Feed A,%
+xmv_4,XMV,4,V,163,Valve Position Feed C,%
+xmv_5,XMV,5,V,166,Valve Position Compressor Re-Cycle,%
+xmv_6,XMV,6,V,167,Valve Position Purge,%
+xmv_7,XMV,7,V,168,Valve Position Underflow Separator,%
+xmv_8,XMV,8,V,170,Valve Position Underflow Stripper,%
+xmv_9,XMV,9,V,169,Valve Position Stripper Steam,%
+xmv_10,XMV,10,V,164,Valve Position Cooling Water Outlet Reactor,%
+xmv_11,XMV,11,V,165,Valve Position Cooling Water Outlet Condenser,%
+xmv_12,XMV,12,SC,107,Agitator Setting Reactor,%
